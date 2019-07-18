@@ -1,7 +1,11 @@
 <template>
   <div id="app">
-    <main-background></main-background>
-
+    <main-background
+      :status="status"
+    ></main-background>
+    <button @click="status = 'top'">top</button>
+    <button @click="status = 'mid'">mid</button>
+    <button @click="status = 'bottom'">bottom</button>
     <router-view/>
   </div>
 </template>
@@ -27,6 +31,11 @@ import MainBackground from '@/components/MainBackground.vue'
 export default {
   components: {
     MainBackground
+  },
+  data () {
+    return {
+      status: 'mid'
+    }
   }
 }
 </script>
