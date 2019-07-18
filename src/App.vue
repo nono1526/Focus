@@ -6,6 +6,10 @@
   </div>
 </template>
 <style lang="stylus">
+@font-face
+  font-family no1
+  font-style normal
+  src url(../public/font/Hijrnotes_PERSONAL_USE_ONLY.ttf)
 html, body
   padding 0
   margin 0
@@ -18,6 +22,7 @@ html, body
 </style>
 
 <script>
+
 import MainBackground from '@/components/MainBackground.vue'
 export default {
   components: {

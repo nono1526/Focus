@@ -2,6 +2,7 @@
   <div class="wrapper">
     <canvas ref="bg" id="main"></canvas>
     <canvas ref="blur" id="blur"></canvas>
+    <div class="focus">Focus</div>
   </div>
 </template>
 
@@ -12,6 +13,7 @@ export default {
   name: 'main-background',
   data () {
     return {
+      publicPath: process.env.BASE_URL,
       canvas: null,
       ctx: null,
       time: 0,
@@ -42,7 +44,7 @@ export default {
       ctx.fill()
       ctx.beginPath()
       ctx.arc(WW / 2, WH / 2 + Math.cos(this.time / 30) * 10 - 30, 120, 0, Math.PI * 2)
-      ctx.fillStyle = '#FFF3B5'
+      ctx.fillStyle = '#FEFFF9'
       ctx.fill()
       if (blur) ctx.filter = 'blur(16px)'
     },
@@ -63,16 +65,32 @@ export default {
 </script>
 
 <style lang="stylus" scoped>
-  .wrapper
-    height 100%
-    width 100%
-    position relative
-    canvas
-      position absolute
-      left 0
-      top 0
-    
-    #blur
-      z-index 1
-      clip-path circle(75% at 50% 105%)
+
+.wrapper
+  height 100vh
+  width 100vw
+  position relative
+  canvas
+    position absolute
+    left 0
+    top 0
+  #blur
+    z-index 1
+    clip-path circle(75% at 50% 105%)
+.focus
+  font-family 'no1'
+  position absolute
+  z-index 2
+  color black
+  font-size 40px
+  text-shadow 0 24px 12px
+  top 45%
+  left 50%
+  transform translate(-50%, -50%)
+  animation: linear updown 3s infinite alternate
+  @keyframes updown
+    from
+      transform translate(-50%, -90%)
+    to
+      transform translate(-50%, -70%)
 </style>
