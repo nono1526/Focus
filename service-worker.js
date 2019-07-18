@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/3.6.3/workbox-sw.js");
 
 importScripts(
-  "precache-manifest.660db8f3aabd1625cf3ac975dc1b1b46.js"
+  "precache-manifest.8c4a2fac78b04a962d8c3ccf402fc0a9.js"
 );
 
 workbox.core.setCacheNameDetails({prefix: "focus"});

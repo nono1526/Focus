@@ -1,6 +1,6 @@
 self.__precacheManifest = [
   {
-    "revision": "b6216d61c03e6ce0c9aea6ca7808f7ca",
+    "revision": "735ab4f94fbcd57074377afca324c813",
     "url": "robots.txt"
   },
   {
@@ -8,16 +8,20 @@ self.__precacheManifest = [
     "url": "js/chunk-vendors.aa5823c6.js"
   },
   {
-    "revision": "bd1947219682371f123e",
-    "url": "js/app.4dbed8de.js"
+    "revision": "5af2d0fc855f7339a9ff",
+    "url": "js/app.8b52f9a0.js"
   },
   {
-    "revision": "1862e86b944e3c157167",
-    "url": "js/about.f1635320.js"
+    "revision": "39e9007e5030f8f3a008",
+    "url": "js/about.345c152b.js"
   },
   {
-    "revision": "c007a462407757912c59e1198e8eb6d8",
+    "revision": "72d0c3d6af80cfa26b634525bd9ce363",
     "url": "index.html"
+  },
+  {
+    "revision": "f44f27f19af03ee18a1e4c116e5b4b9c",
+    "url": "img/dotWh.f44f27f1.png"
   },
   {
     "revision": "95b18124a7a6e103ef3d94a99bb2c15e",
@@ -32,7 +36,7 @@ self.__precacheManifest = [
     "url": "font/Hijrnotes_PERSONAL_USE_ONLY.ttf"
   },
   {
-    "revision": "bd1947219682371f123e",
-    "url": "css/app.5b942cd0.css"
+    "revision": "5af2d0fc855f7339a9ff",
+    "url": "css/app.b8e07ffe.css"
   }
 ];
