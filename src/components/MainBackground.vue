@@ -3,13 +3,13 @@
     <canvas ref="bg" id="main"></canvas>
     <canvas
       ref="blur"
-      :class="{top: this.status === 'top'}"
+      :class="{top: status === 'top', bottom: status === 'bottom'}"
       id="blur"></canvas>
     <div class="focus"
-      :class="{top: this.status === 'top'}"
-    >Focus</div>
+      :class="{top: status === 'top', bottom: status === 'bottom'}"
+    >{{ status === 'bottom' ? 'Breath Time' : 'Focus' }}</div>
     <div class="time" :class="{
-      show: status === 'top'
+      top: status === 'top', bottom: status === 'bottom'
     }">{{remainMinutes}}:{{remainSeconds}}</div>
     <img class="dotWh" ref="dotWh" src="../assets/dotWh.png" width="100%">
   </div>
@@ -130,7 +130,7 @@ export default {
       })
     },
     runTop () {
-      const top = WH / 3
+      const top = WH * 2 / 5
       if (this.moon.y > top) {
         this.moon.y -= 30
         this.moon.r -= 5
@@ -141,10 +141,10 @@ export default {
       } else {
       }
     },
-    runMid () {
+    runMid (isFromBottom) {
       const top = WH / 2
       if (this.moon.y < top) {
-        this.moon.y += 30
+        this.moon.y += 20
         this.moon.r += 5
         this.bgc.r -= 3
         this.bgc.g -= 3
@@ -152,25 +152,39 @@ export default {
         window.setTimeout(() => this.runMid(), 1000 / 30)
       } else {
         console.log('end2')
+        this.moon.r = 120
         this.running = false
       }
     },
     runBottom () {
-      console.log('bottom')
+      const top = WH / 2
+      if (this.moon.y < top) {
+        this.moon.y += 20
+        this.bgc.r -= 3
+        this.bgc.g -= 3
+        this.bgc.b -= 3
+        window.setTimeout(() => this.runBottom(), 1000 / 30)
+      } else {
+        console.log('end3')
+        this.running = false
+      }
     }
   },
   watch: {
-    status (val) {
+    status (val, last) {
+      console.log(last, val)
       this.running = true
       const statusActionMapping = {
         top: this.runTop,
         mid: this.runMid,
         bottom: this.runBottom
       }
-      if (val === 'top') {
+      if (val === 'top' && last === 'mid') {
         window.clearTimeout(this.countTimer)
         this.counter = FULL_TIME
         this.countdown()
+      } else if (val === 'bottom' && last === 'top') {
+        window.clearTimeout(this.countTimer)
       }
       window.setTimeout(() => statusActionMapping[val](), 1000 / 30)
     }
@@ -203,6 +217,9 @@ export default {
     clip-path circle(75% at 50% 105%)
     &.top
       opacity 0
+    &.bottom
+      clip-path none
+
 .time
   font-family 'Verdana'
   font-weight lighter
@@ -210,16 +227,20 @@ export default {
   z-index -1
   color #2B2B32
   font-size 40px
-  top 30%
+  top 40%
   left 50%
   transform translate(-50%, -50%)
   opacity 0
   transition opacity .1s
-
-.show
-  opacity 1
+  &.bottom
+    top 55%
+    font-size 20px
+    opacity 1
+  &.top
+    opacity 1
 
 .focus
+  white-space nowrap
   font-family 'no1'
   font-weight bold
   position absolute
@@ -232,7 +253,7 @@ export default {
   transform translate(-50%, -50%)
   transition .6s
   &.top
-    top 23%
+    top 33%
     font-size 20px
     transform translate(-50%, -50%)
     text-shadow none
