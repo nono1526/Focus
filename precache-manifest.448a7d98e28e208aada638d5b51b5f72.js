@@ -1,6 +1,6 @@
 self.__precacheManifest = [
   {
-    "revision": "735ab4f94fbcd57074377afca324c813",
+    "revision": "b6216d61c03e6ce0c9aea6ca7808f7ca",
     "url": "robots.txt"
   },
   {
@@ -8,15 +8,15 @@ self.__precacheManifest = [
     "url": "js/chunk-vendors.aa5823c6.js"
   },
   {
-    "revision": "5af2d0fc855f7339a9ff",
-    "url": "js/app.8b52f9a0.js"
+    "revision": "bb8df9e9df9c43db5751",
+    "url": "js/app.7a557e5d.js"
   },
   {
-    "revision": "39e9007e5030f8f3a008",
-    "url": "js/about.345c152b.js"
+    "revision": "ae3dcb4ed2f510de8c33",
+    "url": "js/about.9d1da014.js"
   },
   {
-    "revision": "72d0c3d6af80cfa26b634525bd9ce363",
+    "revision": "5febc22570fc52aff2ef770f3fc922ed",
     "url": "index.html"
   },
   {
@@ -36,7 +36,7 @@ self.__precacheManifest = [
     "url": "font/Hijrnotes_PERSONAL_USE_ONLY.ttf"
   },
   {
-    "revision": "5af2d0fc855f7339a9ff",
-    "url": "css/app.b8e07ffe.css"
+    "revision": "bb8df9e9df9c43db5751",
+    "url": "css/app.cc6d295d.css"
   }
 ];
