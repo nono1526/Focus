@@ -8,15 +8,15 @@ self.__precacheManifest = [
     "url": "js/chunk-vendors.aa5823c6.js"
   },
   {
-    "revision": "bb8df9e9df9c43db5751",
-    "url": "js/app.7a557e5d.js"
+    "revision": "2bf0a9511606306a08e7",
+    "url": "js/app.b60c3eab.js"
   },
   {
     "revision": "ae3dcb4ed2f510de8c33",
     "url": "js/about.9d1da014.js"
   },
   {
-    "revision": "5febc22570fc52aff2ef770f3fc922ed",
+    "revision": "17f08d75023b498d7ce2bb7fc5898fec",
     "url": "index.html"
   },
   {
@@ -36,7 +36,7 @@ self.__precacheManifest = [
     "url": "font/Hijrnotes_PERSONAL_USE_ONLY.ttf"
   },
   {
-    "revision": "bb8df9e9df9c43db5751",
-    "url": "css/app.cc6d295d.css"
+    "revision": "2bf0a9511606306a08e7",
+    "url": "css/app.8dba8ad5.css"
   }
 ];
