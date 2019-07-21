@@ -1,9 +1,9 @@
 <template>
   <div class="wrapper">
-    <canvas ref="bg" id="main"></canvas>
+    <canvas ref="bg" id="main" :class="{top: status === 'top', bottom: status === 'bottom', hide: visible}"></canvas>
     <canvas
       ref="blur"
-      :class="{top: status === 'top', bottom: status === 'bottom'}"
+      :class="{top: status === 'top', bottom: status === 'bottom', hide: visible}"
       id="blur"></canvas>
     <div class="focus"
       :class="{top: status === 'top', bottom: status === 'bottom'}"
@@ -11,7 +11,7 @@
     <div class="time" :class="{
       top: status === 'top', bottom: status === 'bottom'
     }">{{remainMinutes}}:{{remainSeconds}}</div>
-    <img class="dotWh" ref="dotWh" src="../assets/dotWh.png" width="100%">
+    <img class="dotWh" ref="dotWh" src="../assets/dotWh.png" height="100%">
   </div>
 </template>
 
@@ -23,7 +23,12 @@ const WH = window.innerHeight
 export default {
   name: 'main-background',
   props: {
-    status: String
+    status: String,
+    remainTime: Number,
+    visible: {
+      default: false,
+      type: Boolean
+    }
   },
   data () {
     return {
@@ -36,7 +41,7 @@ export default {
       timer: null,
       moon: {
         x: WW / 2,
-        y: WH / 2,
+        y: WH * 2 / 5,
         r: 120
       },
       requestId: 0,
@@ -44,7 +49,7 @@ export default {
         r: 22,
         g: 22,
         b: 22,
-        a: 1
+        a: 0.9
       },
       running: false,
       counter: 1000 * 60 * 60 * 25
@@ -52,10 +57,10 @@ export default {
   },
   computed: {
     remainMinutes () {
-      return Math.floor(this.counter / 1000 / 60)
+      return Math.floor(this.remainTime / 1000 / 60)
     },
     remainSeconds () {
-      const sec = (this.counter / 1000) % 60
+      const sec = (this.remainTime / 1000) % 60
       return `${sec < 10 ? '0' : ''}${sec}`
     }
   },
@@ -130,7 +135,7 @@ export default {
       })
     },
     runTop () {
-      const top = WH * 2 / 5
+      const top = WH * 3 / 10
       if (this.moon.y > top) {
         this.moon.y -= 30
         this.moon.r -= 5
@@ -142,18 +147,33 @@ export default {
       }
     },
     runMid (isFromBottom) {
-      const top = WH / 2
-      if (this.moon.y < top) {
-        this.moon.y += 20
-        this.moon.r += 5
-        this.bgc.r -= 3
-        this.bgc.g -= 3
-        this.bgc.b -= 3
-        window.setTimeout(() => this.runMid(), 1000 / 30)
+      const top = WH * 2 / 5
+      if (!isFromBottom) {
+        if (this.moon.y < top) {
+          this.moon.y += 20
+          this.moon.r += 5
+          this.bgc.r -= 3
+          this.bgc.g -= 3
+          this.bgc.b -= 3
+          window.setTimeout(() => this.runMid(isFromBottom), 1000 / 30)
+        } else {
+          this.moon.r = 120
+          this.moon.y = top
+          this.running = false
+        }
       } else {
-        console.log('end2')
-        this.moon.r = 120
-        this.running = false
+        if (this.moon.y > top) {
+          this.moon.y -= 13
+          this.moon.r += 2
+          this.bgc.r = 22
+          this.bgc.g = 22
+          this.bgc.b = 22
+          window.setTimeout(() => this.runMid(isFromBottom), 1000 / 30)
+        } else {
+          this.moon.r = 120
+          this.moon.y = top
+          this.running = false
+        }
       }
     },
     runBottom () {
@@ -165,28 +185,19 @@ export default {
         this.bgc.b -= 3
         window.setTimeout(() => this.runBottom(), 1000 / 30)
       } else {
-        console.log('end3')
         this.running = false
       }
     }
   },
   watch: {
     status (val, last) {
-      console.log(last, val)
       this.running = true
       const statusActionMapping = {
         top: this.runTop,
         mid: this.runMid,
         bottom: this.runBottom
       }
-      if (val === 'top' && last === 'mid') {
-        window.clearTimeout(this.countTimer)
-        this.counter = FULL_TIME
-        this.countdown()
-      } else if (val === 'bottom' && last === 'top') {
-        window.clearTimeout(this.countTimer)
-      }
-      window.setTimeout(() => statusActionMapping[val](), 1000 / 30)
+      window.setTimeout(() => statusActionMapping[val](last === 'bottom'), 1000 / 30)
     }
   },
   mounted () {
@@ -202,6 +213,7 @@ export default {
 <style lang="stylus" scoped>
 
 .wrapper
+  background-color rgba(22,22,22,.9)
   height 100vh
   width 100vw
   position absolute
@@ -212,9 +224,13 @@ export default {
     top 0
   #main
     z-index -2
+    &.hide
+      opacity 0
   #blur
     z-index -1
-    clip-path circle(75% at 50% 105%)
+    clip-path circle(90% at 50% 105%)
+    &.hide
+      opacity 0
     &.top
       opacity 0
     &.bottom
@@ -227,18 +243,18 @@ export default {
   z-index -1
   color #2B2B32
   font-size 40px
-  top 40%
+  top 31%
   left 50%
   transform translate(-50%, -50%)
   opacity 0
-  transition opacity .1s
   &.bottom
     top 55%
     font-size 20px
     opacity 1
+    transition .1s
   &.top
     opacity 1
-
+    transition .1s
 .focus
   white-space nowrap
   font-family 'no1'
@@ -248,16 +264,18 @@ export default {
   color #2B2B32
   font-size 40px
   text-shadow 0 24px 12px
-  top 45%
+  top 33%
   left 50%
   transform translate(-50%, -50%)
   transition .6s
   &.top
-    top 33%
+    top 23%
     font-size 20px
     transform translate(-50%, -50%)
     text-shadow none
     opacity .7
+  &.bottom
+    top 48%
   // animation: linear updown 3s infinite alternate
   // @keyframes updown
   //   from
