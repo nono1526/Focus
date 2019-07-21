@@ -14,10 +14,12 @@
       <h2 v-show="status === 'mid' && !isEdit" class="title">Start to focus</h2>
     </div>
     <ul class="todos " :class="actionClass">
-      <li class="todos__tile"  @click="item.done = !item.done" v-for="(item, key) in todos" :key="key">
-        <div class="tile__btn" :class="{active: item.done}"></div>
-        <div class="tile__text">{{ item.text }}</div>
-      </li>
+      <transition-group>
+        <li class="todos__tile"  @click="doneTask(item)" v-for="(item, key) in todos" :key="key" :class="{show: !item.done}">
+          <div class="tile__btn" :class="{active: item.done}"></div>
+          <div class="tile__text">{{ item.text }}</div>
+        </li>
+      </transition-group>
     </ul>
     <div class="toolbar " :class="actionClass">
       <div class="toolbar__actions actions--main" v-show="!isPause && !isEdit">
@@ -27,8 +29,8 @@
         <img class="action__btn" src="@/assets/Settings.svg" v-show="isWaiting">
       </div>
       <div class="toolbar__actions actions--pause" v-show="isPause && !isEdit">
-        <f-btn @click="togglePause">Coutinue</f-btn>
-        <f-btn @click="stop">Quit</f-btn>
+        <f-btn class="mr-10" @click="togglePause">Coutinue <img style="margin-left: 5px" src="@/assets/play-button.svg" width="15px"></f-btn>
+        <f-btn class="ml-10" outline @click="stop">Quit</f-btn>
       </div>
       <div class="toolbar__actions actions--edit" v-show="isEdit">
         <input v-model="newTask" class="edit__textfield" type="text" placeHolder="Let's get things done" @keydown.enter="addTask">
@@ -55,17 +57,11 @@ export default {
     return {
       newTask: '',
       isEdit: false,
-      focusTime: 1000,
-      breathTime: 5000,
+      focusTime: MINUTE,
+      breathTime: 1000 * 30,
       status: 'mid',
       counter: 25 * MINUTE,
-      todos: [{
-        text: '棒式', done: false
-      }, {
-        text: '側棒式', done: true
-      }, {
-        text: '側棒式', done: false
-      }],
+      todos: [],
       countTimer: null,
       isPause: false
     }
@@ -83,13 +79,27 @@ export default {
       }
     }
   },
+  mounted () {
+    const todos = window.localStorage.getItem('todos')
+    if (todos) {
+      this.todos = JSON.parse(todos).filter(todo => !todo.done)
+    }
+    window.addEventListener('beforeunload', e => this.beforeunloadHandler(e))
+  },
+  beforeDestroy () {
+    window.removeEventListener('beforeunload', e => this.beforeunloadHandler(e))
+  },
   methods: {
+    beforeunloadHandler () {
+      window.localStorage.setItem('todos', JSON.stringify(this.todos.filter(todo => !todo.done)))
+    },
     addTask () {
       this.todos.push({
         text: this.newTask,
         done: false
       })
       this.newTask = ''
+      window.localStorage.setItem('todos', JSON.stringify(this.todos))
     },
     stop () {
       this.status = STATUS_WAITING
@@ -124,6 +134,9 @@ export default {
         this.countdown()
       }
     },
+    doneTask (todo) {
+      todo.done = !todo.done
+    },
     togglePause () {
       if (this.isPause) {
         this.countdown()
@@ -145,7 +158,10 @@ html, body
   padding 0
   margin 0
   height 100vh
-
+.ml-10
+  margin-left 10px
+.mr-10
+  margin-right 10px
 #app
   font-family 'Noto Sans TC', 'Avenir', Helvetica, Arial, sans-serif
   -webkit-font-smoothing antialiased
@@ -153,6 +169,7 @@ html, body
   display flex
   flex-direction column
   height 100%
+
   &.mid
     background-image linear-gradient(rgba(#fff, 0.01), rgba(#fff, 0.01))
   &.top
@@ -193,13 +210,20 @@ html, body
   margin 0
   max-height 100%
   overflow auto
+  transition 1s
   .todos__tile
-    min-height 44px
     background-color rgba(#fff, 0.03)
     display flex
-    margin 2px 0
+    margin 0
     align-items center
-    transition .3s
+    position relative
+    height 0
+    opacity 0
+    transition opacity .3s, height 1s
+    &.show
+      height 44px
+      opacity 1
+      margin 2px 0
     &:hover
       background-color rgba(#fff, 0.1)
       .tile__btn
@@ -232,6 +256,8 @@ html, body
           opacity 1
     .tile__text
       color rgba(#fff, 0.28)
+      font-weight bolder
+      letter-spacing .8px
 .toolbar
   min-height 80px
   .toolbar__actions
