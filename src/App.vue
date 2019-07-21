@@ -21,7 +21,7 @@
         </li>
       </transition-group>
     </ul>
-    <div class="setting" :class="{show: isSetting}">
+    <div class="setting" :class="{show: isSetting}" v-show="isSetting">
       <h3>Focus time: {{ focusTime / 60 / 1000 }} minutes</h3>
       <div class="setting__row">
         <input v-model.number="newFocusTime" class="edit__textfield mr-10" type="text" placeHolder="Set focus time / min">
@@ -113,7 +113,7 @@ export default {
       this.focusTime = this.newFocusTime * MINUTE
     },
     setRelaxTime () {
-      this.relax = this.newRelaxTime * 1000
+      this.breathTime = this.newRelaxTime * 1000
     },
     back () {
       this.isEdit = false
@@ -236,9 +236,9 @@ html, body
 .todos
   transition flex 1s
   &.mid
-    flex 1
+    flex 6
   &.top
-    flex 4
+    flex 9
   &.bottom
     flex 0
     opacity 0
@@ -292,7 +292,7 @@ html, body
         &::before
           opacity 1
     .tile__text
-      color rgba(#fff, 0.28)
+      color rgba(#fff, 0.8)
       font-weight bolder
       letter-spacing .8px
 .toolbar
