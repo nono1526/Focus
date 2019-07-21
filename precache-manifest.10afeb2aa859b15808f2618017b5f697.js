@@ -12,8 +12,8 @@ self.__precacheManifest = [
     "url": "img/dotWh.f44f27f1.png"
   },
   {
-    "revision": "64c4e83c3139cf62defe",
-    "url": "js/app.74abfdcd.js"
+    "revision": "a1a4477f5ee0cf444a42",
+    "url": "js/app.2aa1c1c8.js"
   },
   {
     "revision": "8b68464a25f6ee85cfd7",
@@ -28,7 +28,7 @@ self.__precacheManifest = [
     "url": "js/about.345c152b.js"
   },
   {
-    "revision": "d0c0bf21cc1d67038658ccedca666aa9",
+    "revision": "4f2d53535961b070b961f41cc0c668e5",
     "url": "index.html"
   },
   {
@@ -60,7 +60,7 @@ self.__precacheManifest = [
     "url": "font/Hijrnotes_PERSONAL_USE_ONLY.ttf"
   },
   {
-    "revision": "64c4e83c3139cf62defe",
+    "revision": "a1a4477f5ee0cf444a42",
     "url": "css/app.ea054739.css"
   }
 ];
