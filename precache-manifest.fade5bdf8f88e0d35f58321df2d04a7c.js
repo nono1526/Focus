@@ -12,8 +12,8 @@ self.__precacheManifest = [
     "url": "img/dotWh.f44f27f1.png"
   },
   {
-    "revision": "f50c80d969180bd2a032",
-    "url": "js/app.16891bce.js"
+    "revision": "55c45fee5fc8135d3ab3",
+    "url": "js/app.8d8f7ea3.js"
   },
   {
     "revision": "8b68464a25f6ee85cfd7",
@@ -28,7 +28,7 @@ self.__precacheManifest = [
     "url": "js/about.345c152b.js"
   },
   {
-    "revision": "1cff7101b85a7606a350570234ee347e",
+    "revision": "e7d834c83e9314e34061d379d53fe754",
     "url": "index.html"
   },
   {
@@ -64,7 +64,7 @@ self.__precacheManifest = [
     "url": "favicon.png"
   },
   {
-    "revision": "f50c80d969180bd2a032",
-    "url": "css/app.8bace0e6.css"
+    "revision": "55c45fee5fc8135d3ab3",
+    "url": "css/app.193b9b5c.css"
   }
 ];
