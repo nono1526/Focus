@@ -12,19 +12,23 @@ self.__precacheManifest = [
     "url": "img/dotWh.f44f27f1.png"
   },
   {
-    "revision": "78229abe3969a7d0c758",
-    "url": "js/app.eb547a81.js"
+    "revision": "40ecffe320f9f0fd0578",
+    "url": "js/app.5c01aaa5.js"
   },
   {
     "revision": "8b68464a25f6ee85cfd7",
     "url": "js/chunk-vendors.475a835a.js"
   },
   {
+    "revision": "4920fde19f43ca6fb91311c12e43d962",
+    "url": "img/pause.4920fde1.svg"
+  },
+  {
     "revision": "39e9007e5030f8f3a008",
     "url": "js/about.345c152b.js"
   },
   {
-    "revision": "7294564067bdb48eaff497347b65e3c4",
+    "revision": "bb693ed7e80fa02f06fce24f09c78f15",
     "url": "index.html"
   },
   {
@@ -32,8 +36,8 @@ self.__precacheManifest = [
     "url": "img/play.4ed3e950.svg"
   },
   {
-    "revision": "4920fde19f43ca6fb91311c12e43d962",
-    "url": "img/pause.4920fde1.svg"
+    "revision": "d79b78fd2a3a2045fca22fdad99e5f6b",
+    "url": "img/play-button.d79b78fd.svg"
   },
   {
     "revision": "1eebf3abe44a0da8c08f4dcd75783db2",
@@ -56,7 +60,7 @@ self.__precacheManifest = [
     "url": "font/Hijrnotes_PERSONAL_USE_ONLY.ttf"
   },
   {
-    "revision": "78229abe3969a7d0c758",
-    "url": "css/app.cf290954.css"
+    "revision": "40ecffe320f9f0fd0578",
+    "url": "css/app.23b0d1aa.css"
   }
 ];
