@@ -20,15 +20,15 @@ self.__precacheManifest = [
     "url": "js/chunk-vendors.475a835a.js"
   },
   {
-    "revision": "4920fde19f43ca6fb91311c12e43d962",
-    "url": "img/pause.4920fde1.svg"
+    "revision": "1eebf3abe44a0da8c08f4dcd75783db2",
+    "url": "img/add.1eebf3ab.svg"
   },
   {
     "revision": "39e9007e5030f8f3a008",
     "url": "js/about.345c152b.js"
   },
   {
-    "revision": "2fab22e8ad762bdc73af19595fb3df13",
+    "revision": "1cff7101b85a7606a350570234ee347e",
     "url": "index.html"
   },
   {
@@ -40,8 +40,8 @@ self.__precacheManifest = [
     "url": "img/play-button.d79b78fd.svg"
   },
   {
-    "revision": "1eebf3abe44a0da8c08f4dcd75783db2",
-    "url": "img/add.1eebf3ab.svg"
+    "revision": "4920fde19f43ca6fb91311c12e43d962",
+    "url": "img/pause.4920fde1.svg"
   },
   {
     "revision": "63b5b63e4bc24783c5eda80780b63f68",
@@ -58,6 +58,10 @@ self.__precacheManifest = [
   {
     "revision": "f30ff0f1e20674a773ef9cc152fe2725",
     "url": "font/Hijrnotes_PERSONAL_USE_ONLY.ttf"
+  },
+  {
+    "revision": "b8a14e6dea0ad0441330a92e414bf2a0",
+    "url": "favicon.png"
   },
   {
     "revision": "f50c80d969180bd2a032",
