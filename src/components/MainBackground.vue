@@ -17,7 +17,6 @@
 
 <script>
 const DEG_TO_PI = Math.PI / 180
-const FULL_TIME = 60 * 1000 * 25
 const WW = window.innerWidth
 const WH = window.innerHeight
 export default {
@@ -28,7 +27,8 @@ export default {
     visible: {
       default: false,
       type: Boolean
-    }
+    },
+    fullTime: Number
   },
   data () {
     return {
@@ -51,8 +51,7 @@ export default {
         b: 22,
         a: 0.9
       },
-      running: false,
-      counter: 1000 * 60 * 60 * 25
+      running: false
     }
   },
   computed: {
@@ -65,12 +64,6 @@ export default {
     }
   },
   methods: {
-    countdown () {
-      this.countTimer = window.setTimeout(() => {
-        this.counter -= 1000
-        if (this.counter > 0) this.countdown()
-      }, 1000)
-    },
     init () {
       this.canvas = this.$refs['bg']
       this.blurCanvas = this.$refs['blur']
@@ -114,8 +107,8 @@ export default {
         ctx.arc(this.moon.x, moonY, this.moon.r + 13, 0, Math.PI * 2)
         ctx.strokeStyle = 'rgba(254, 255, 249, 0.3)'
         ctx.stroke()
-
-        const pathToAngle = (360 - ((this.counter / FULL_TIME) * 360) - 90) * DEG_TO_PI
+        console.log(this.fullTime)
+        const pathToAngle = (360 - ((this.remainTime / this.fullTime) * 360) - 90) * DEG_TO_PI
         ctx.beginPath()
         const outR = this.moon.r + 13
         const dotX = outR * Math.cos(pathToAngle)

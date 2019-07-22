@@ -4,6 +4,7 @@
       :status="status"
       :visible="isEdit"
       :remainTime="counter"
+      :fullTime="fullTime"
     ></main-background>
     <div class="top-space "
       :class="actionClass"
@@ -86,6 +87,9 @@ export default {
     }
   },
   computed: {
+    fullTime () {
+      return this.newFocusTime * MINUTE
+    },
     isWaiting () {
       return this.status === STATUS_WAITING
     },
