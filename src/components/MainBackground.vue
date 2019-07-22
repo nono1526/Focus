@@ -107,7 +107,6 @@ export default {
         ctx.arc(this.moon.x, moonY, this.moon.r + 13, 0, Math.PI * 2)
         ctx.strokeStyle = 'rgba(254, 255, 249, 0.3)'
         ctx.stroke()
-        console.log(this.fullTime)
         const pathToAngle = (360 - ((this.remainTime / this.fullTime) * 360) - 90) * DEG_TO_PI
         ctx.beginPath()
         const outR = this.moon.r + 13
