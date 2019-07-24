@@ -93,13 +93,13 @@ export default {
       const moonY = this.status === 'mid' ? this.moon.y + Math.cos(this.time / 30) * 10 - 30 : this.moon.y
 
       if (this.status === 'top') {
-        ctx.shadowBlur = 100
-        ctx.shadowColor = '#FEFFF9'
+        ctx.shadowBlur = 55
+        ctx.shadowColor = '#FFF3B5'
       } else {
         ctx.shadowBlur = 0
       }
       ctx.arc(this.moon.x, moonY, this.moon.r, 0, Math.PI * 2)
-      ctx.fillStyle = '#FEFFF9'
+      ctx.fillStyle = '#FCFFEE'
       ctx.fill()
 
       if (this.status === 'top') {

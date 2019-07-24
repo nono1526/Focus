@@ -212,7 +212,7 @@ html, body
   &.top
     background-image linear-gradient(rgba(#fff, 0.001), rgba(#fff, 0.1))
 .top-space
-  transition 1s
+  transition .2s
   flex 10
   padding 5px 20px
   &.edit
@@ -233,10 +233,7 @@ html, body
   background-color transparent
   border none
   outline none
-.setting
-  opacity 0
-  &.show
-    opacity 1
+
 .todos
   transition flex 1s
   &.mid
@@ -325,6 +322,7 @@ html, body
   color rgba(255,255,255, 0.7)
 .setting
   padding 0 20px
+
   h3
     color rgba(255,255,255, 0.7)
   .setting__row
