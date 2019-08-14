@@ -14,6 +14,6 @@ Watch design layout [Niki-Focus](https://www.behance.net/gallery/82876997/Focus-
 ### Setting
 ![](https://i.imgur.com/HDa5n2y.gif)
 ## 感謝
-感謝**六角學院** The-F2E 活動
-感謝 **Niki** 設計師大大厲害的設計稿
-**Thank you!**
+感謝**六角學院** The-F2E 活動 . 
+感謝 **Niki** 設計師大大厲害的設計稿 . 
+**Thank you!** . 
