@@ -1,5 +1,5 @@
 # Focus 
-[ONLINE-DEMO](https://nono1526.github.io/focus/#)
+[ONLINE-DEMO](https://nono1526.github.io/Focus/#)
 ## Designed by Niki
 Watch design layout [Niki-Focus](https://www.behance.net/gallery/82876997/Focus-pomodoro)
 ## Overview
